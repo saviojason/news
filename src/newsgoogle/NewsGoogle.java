@@ -74,7 +74,7 @@ public class NewsGoogle {
     public void getCatholicReading() throws Exception {
         URL url = new URL("http://www.usccb.org/bible/readings/111114.cfm");
         BufferedReader reader = new BufferedReader(new InputStreamReader (url.openStream()));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("catholic-readings.cfm"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("catholic-readings.html"));
         String line;
         while((line = reader.readLine()) !=null){
             //System.out.println(line);
