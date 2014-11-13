@@ -16,6 +16,8 @@ import java.net.URL;
  * @author jsdso1
  */
 public class NewsGoogle {
+    //format todays date mmddyyyy
+    private String date = "111414";
 
     public static void main(String[] args) {
 //            throws Exception {
@@ -57,7 +59,7 @@ public class NewsGoogle {
 
     public void getCathloicRef() throws Exception {
 
-        URL url = new URL("http://onlineministries.creighton.edu/CollaborativeMinistry/111314.html");
+        URL url = new URL("http://onlineministries.creighton.edu/CollaborativeMinistry/"+date+".html");
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
         BufferedWriter writer = new BufferedWriter(new FileWriter("catholic-reflection.html"));
         String line;
@@ -72,7 +74,7 @@ public class NewsGoogle {
     
     
     public void getCatholicReading() throws Exception {
-        URL url = new URL("http://www.usccb.org/bible/readings/111114.cfm");
+        URL url = new URL("http://www.usccb.org/bible/readings/"+date+".cfm");
         BufferedReader reader = new BufferedReader(new InputStreamReader (url.openStream()));
         BufferedWriter writer = new BufferedWriter(new FileWriter("catholic-readings.html"));
         String line;
