@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package newsgoogle;
+package news;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,10 +14,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * Retrieves news from various preferred sources Thank you Java
  *
  * @author jsdso1
  */
-public class NewsGoogle {
+public class News {
 
     //format todays date mmddyyyy
     static String date;// with 0's
@@ -39,7 +40,7 @@ public class NewsGoogle {
 
         setDate();
 
-        NewsGoogle ui = new NewsGoogle();
+        News ui = new News();
         try {
             ui.getCathloicRef();
         } catch (Exception e) {
@@ -67,9 +68,20 @@ public class NewsGoogle {
         } catch (Exception e) {
             System.out.println(e);
         }
+        
+        try {
+            ui.getCNA();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 
+    /**
+     * Set date in different formats
+     *
+     * @return
+     */
     public static String setDate() {
         Date date1 = new Date();
 
@@ -87,6 +99,11 @@ public class NewsGoogle {
         return date;
     }
 
+    /**
+     * Daily Catholic Reflection
+     *
+     * @throws Exception
+     */
     public void getCathloicRef() throws Exception {
 
         URL url = new URL("http://onlineministries.creighton.edu/CollaborativeMinistry/" + date + ".html");
@@ -102,6 +119,11 @@ public class NewsGoogle {
         writer.close();
     }
 
+    /**
+     * Daily Catholic readings
+     *
+     * @throws Exception
+     */
     public void getCatholicReading() throws Exception {
         URL url = new URL("http://www.usccb.org/bible/readings/" + date + ".cfm");
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -116,6 +138,11 @@ public class NewsGoogle {
         writer.close();
     }
 
+    /**
+     * Get Google News
+     *
+     * @throws Exception
+     */
     public void getGoogleNews() throws Exception {
         URL url = new URL("http://news.google.com");
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -130,6 +157,11 @@ public class NewsGoogle {
         writer.close();
     }
 
+    /**
+     * Weather Service
+     *
+     * @throws Exception
+     */
     public void getWeatherMelb() throws Exception {
         URL url = new URL("http://www.bom.gov.au/vic/forecasts/melbourne.shtml");
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -147,7 +179,6 @@ public class NewsGoogle {
     /**
      * Saint of the day
      */
-    //http://www.americancatholic.org/features/saints/ByDate.aspx?soddate=4/7/2015
     public void getSaintOfDay() throws Exception {
         URL url = new URL("http://www.americancatholic.org/features/saints/ByDate.aspx?soddate=" + daten0);
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -161,4 +192,28 @@ public class NewsGoogle {
         reader.close();
         writer.close();
     }
+
+    /**
+     * Catholic News Agency
+     */
+//    public void getCNA() throws Exception {
+//        URL url = new URL("http://www.catholicnewsagency.com/headlines/asia_pacific/");
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter("cna.html"));
+//        String line;
+//        while ((line = reader.readLine()) != null) {
+//            //System.out.println(line);
+//            writer.write(line);
+//            writer.newLine();
+//        }
+//        reader.close();
+//        writer.close();
+//    }
+    public void getCNA()
+    {
+        Wget ci = new Wget();
+        ci.executeCommand("wget", true, " http://www.catholicnewsagency.com/headlines/asia_pacific/");
+        
+    }
+    
 }
